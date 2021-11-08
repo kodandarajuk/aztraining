@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Azdatafactoryv2r"
+		},
+		"ls_adlsgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adlsgen2'"
+		},
+		"ls_adlsgen1_properties_typeProperties_dataLakeStoreUri": {
+			"type": "string",
+			"defaultValue": "https://azdatalakegen1r.azuredatalakestore.net/webhdfs/v1"
+		},
+		"ls_adlsgen1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "65e4e06f-f263-4c1f-becb-90deb8c2d9ff"
+		},
+		"ls_adlsgen1_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "811548f0-2c3c-4941-91cd-5b69970105d5"
+		},
+		"ls_adlsgen1_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "rg-azdataeng-dev"
+		},
+		"ls_adlsgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azadlsgen2r.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "Azdatafactoryv2r_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_adlsgen2_accountKey": {
+						"value": "[parameters('ls_adlsgen2_accountKey')]"
+					},
+					"ls_adlsgen1_properties_typeProperties_dataLakeStoreUri": {
+						"value": "[parameters('ls_adlsgen1_properties_typeProperties_dataLakeStoreUri')]"
+					},
+					"ls_adlsgen1_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_adlsgen1_properties_typeProperties_tenant')]"
+					},
+					"ls_adlsgen1_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('ls_adlsgen1_properties_typeProperties_subscriptionId')]"
+					},
+					"ls_adlsgen1_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('ls_adlsgen1_properties_typeProperties_resourceGroupName')]"
+					},
+					"ls_adlsgen2_properties_typeProperties_url": {
+						"value": "[parameters('ls_adlsgen2_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

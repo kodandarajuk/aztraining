@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Azdatafactoryv2r"
+		},
+		"ls_adlsgen2_accountKey": {
+			"value": ""
+		},
+		"ls_adlsgen1_properties_typeProperties_dataLakeStoreUri": {
+			"value": "https://azdatalakegen1r.azuredatalakestore.net/webhdfs/v1"
+		},
+		"ls_adlsgen1_properties_typeProperties_tenant": {
+			"value": "65e4e06f-f263-4c1f-becb-90deb8c2d9ff"
+		},
+		"ls_adlsgen1_properties_typeProperties_subscriptionId": {
+			"value": "811548f0-2c3c-4941-91cd-5b69970105d5"
+		},
+		"ls_adlsgen1_properties_typeProperties_resourceGroupName": {
+			"value": "rg-azdataeng-dev"
+		},
+		"ls_adlsgen2_properties_typeProperties_url": {
+			"value": "https://azadlsgen2r.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
